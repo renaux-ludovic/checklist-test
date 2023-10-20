@@ -1,10 +1,7 @@
 const CACHE_NAME = 'my-cache';
 
 const urlsToCache = [
-  '/',
   '/index.html',
-  '/static/css/main.chunk.css',
-  '/static/js/main.chunk.js',
 ];
 
 self.addEventListener('install', (event) => {
