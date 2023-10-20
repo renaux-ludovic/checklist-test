@@ -1,7 +1,7 @@
 const CACHE_NAME = 'my-cache';
 
 const urlsToCache = [
-  '/index.html',
+  '/',
 ];
 
 self.addEventListener('install', (event) => {
