@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CHECKLIST from "./checklist";
 function App() {
   const handleInstallClick = () => {
     if (window.deferredPrompt) {
