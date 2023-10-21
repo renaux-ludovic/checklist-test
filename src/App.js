@@ -18,18 +18,22 @@ function App() {
   };
 
   useEffect(() => {
-    window.addEventListener("beforeinstallprompt", (e) => {
+    const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
       window.deferredPrompt = e;
-    });
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    };
   }, []);
 
   return (
     <div className="App">
       <CHECKLIST />
-      {window.deferredPrompt && (
-        <button onClick={handleInstallClick}>Installer</button>
-      )}
+      <button onClick={handleInstallClick}>Installer</button>
     </div>
   );
 }
