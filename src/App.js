@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <CHECKLIST />
-      <button onClick={handleInstallClick}>Installer l'application</button>
+      <button onClick={handleInstallClick}>Installer</button>
     </div>
   );
 }
