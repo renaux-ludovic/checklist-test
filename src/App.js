@@ -1,18 +1,18 @@
 import React from 'react';
-import './App.css';
-import CHECKLIST from './checklist';
 
 function App() {
-  // Fonction pour gérer le clic sur le bouton d'installation
   const handleInstallClick = () => {
     if (window.deferredPrompt) {
       window.deferredPrompt.prompt();
-      window.deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log("L'utilisateur a installé l'application.");
-        }
-        window.deferredPrompt = null;
-      });
+      window.deferredPrompt.userChoice
+        .then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log("L'utilisateur a accepté l'installation.");
+          } else {
+            console.log("L'utilisateur a refusé l'installation.");
+          }
+          window.deferredPrompt = null;
+        });
     }
   };
 
