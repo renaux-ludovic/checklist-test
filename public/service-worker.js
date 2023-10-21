@@ -1,8 +1,6 @@
 const CACHE_NAME = "my-cache";
 
-const urlsToCache = [
-  "/checklist-test"
-];
+const urlsToCache = ["/checklist-test/checklist"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -16,6 +14,15 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
+    })
+  );
+});
+self.addEventListener("appinstalled", (event) => {
+  event.waitUntil(
+    clients.matchAll().then((windowClients) => {
+      for (let client of windowClients) {
+        client.navigate("/checklist-test");
+      }
     })
   );
 });
