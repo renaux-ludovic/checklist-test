@@ -1,8 +1,7 @@
 const CACHE_NAME = "my-cache";
 
 const urlsToCache = [
-  "/",
-  "/checklist",
+  "/checklist-test"
 ];
 
 self.addEventListener("install", (event) => {
