@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CHECKLIST from "./checklist";
+
 function App() {
   const handleInstallClick = () => {
     if (window.deferredPrompt) {
@@ -16,10 +17,19 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      window.deferredPrompt = e;
+    });
+  }, []);
+
   return (
     <div className="App">
       <CHECKLIST />
-      <button onClick={handleInstallClick}>Installer</button>
+      {window.deferredPrompt && (
+        <button onClick={handleInstallClick}>Installer</button>
+      )}
     </div>
   );
 }
