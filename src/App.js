@@ -131,7 +131,7 @@ function App() {
         <button onClick={handleInstallClick}>Installer</button>
       ) : window.deferredPrompt ? null : (
         <Routes>
-          <Route path="/" element={<Menu />} />
+          <Route path="/checklist-test" element={<Menu />} />
           <Route path="/list-1" element={<List1 />} />
           <Route path="/list-2" element={<List2 />} />
           <Route path="/list-3" element={<List3 />} />
