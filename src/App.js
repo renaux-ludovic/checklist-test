@@ -68,7 +68,6 @@ import List2 from "./pages/list2";
 import List3 from "./pages/list3";
 import List4 from "./pages/list4";
 
-
 function App() {
   const [buttonVisible, setButtonVisible] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -121,7 +120,7 @@ function App() {
       ) : window.deferredPrompt ? null : (
         <Router>
           <Routes>
-            <Route path="/checklist-test/" element={<Menu />} />
+            <Route path="/checklist-test" element={<Menu />} />
             <Route path="/checklist-test/list-1" element={<List1 />} />
             <Route path="/checklist-test/list-2" element={<List2 />} />
             <Route path="/checklist-test/list-3" element={<List3 />} />
