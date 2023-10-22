@@ -2,7 +2,7 @@
   "name": "checklist",
   "version": "0.1.0",
   "private": false,
-  "homepage": " https://renaux-ludovic.github.io/checklist-test/",
+  "homepage": " https://renaux-ludovic.github.io/checklist-test",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

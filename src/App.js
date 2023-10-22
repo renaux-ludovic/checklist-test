@@ -1,4 +1,3 @@
-
 // import React, { useEffect, useState } from "react";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import Menu from "./pages/menu";
@@ -6,7 +5,6 @@
 // import List2 from "./pages/list2";
 // import List3 from "./pages/list3";
 // import List4 from "./pages/list4";
-
 
 // function App() {
 //   const [buttonVisible, setButtonVisible] = useState(false);
@@ -74,10 +72,8 @@
 
 // export default App;
 
-
-
 import React, { useEffect, useState } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Menu from "./pages/menu";
 import List1 from "./pages/list1";
 import List2 from "./pages/list2";
@@ -134,15 +130,13 @@ function App() {
       ) : buttonVisible ? (
         <button onClick={handleInstallClick}>Installer</button>
       ) : window.deferredPrompt ? null : (
-        <HashRouter>
-          <Routes>
-            <Route path="/checklist-test" element={<Menu />} />
-            <Route path="/checklist-test/list-1" element={<List1 />} />
-            <Route path="/checklist-test/list-2" element={<List2 />} />
-            <Route path="/checklist-test/list-3" element={<List3 />} />
-            <Route path="/checklist-test/list-4" element={<List4 />} />
-          </Routes>
-        </HashRouter>
+        <Routes>
+          <Route path="/" element={<Menu />} />
+          <Route path="/list-1" element={<List1 />} />
+          <Route path="/list-2" element={<List2 />} />
+          <Route path="/list-3" element={<List3 />} />
+          <Route path="/list-4" element={<List4 />} />
+        </Routes>
       )}
     </div>
   );

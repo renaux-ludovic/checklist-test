@@ -6,16 +6,16 @@ function Menu() {
     <div className="menu">
       <ul>
         <li>
-          <Link to="/checklist-test/list-1">Checklist 1</Link>
+          <Link to="/list-1">Checklist 1</Link>
         </li>
         <li>
-          <Link to="/checklist-test/list-2">Checklist 2</Link>
+          <Link to="/list-2">Checklist 2</Link>
         </li>
         <li>
-          <Link to="/checklist-test/list-3">Checklist 3</Link>
+          <Link to="/list-3">Checklist 3</Link>
         </li>
         <li>
-          <Link to="/checklist-test/list-4">Checklist 4</Link>
+          <Link to="/list-4">Checklist 4</Link>
         </li>
       </ul>
     </div>

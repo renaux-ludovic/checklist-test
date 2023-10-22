@@ -18,7 +18,7 @@ function Checklist() {
   return (
     <div>
       <h1>Checklist 2</h1>
-      <Link to="/checklist-test">Home</Link>
+      <Link to="/">Home</Link>
       <ul>
         {tasks.map((task) => (
           <li key={task.id} className={task.completed ? 'completed' : ''}>
