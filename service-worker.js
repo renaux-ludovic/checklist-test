@@ -1,6 +1,6 @@
 const CACHE_NAME = "my-cache";
 
-const urlsToCache = ["/checklist-test/checklist"];
+const urlsToCache = ["/checklist-test/"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
