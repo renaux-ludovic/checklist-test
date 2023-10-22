@@ -1,6 +1,5 @@
-
 // import React, { useEffect, useState } from 'react';
-// import Checklist from "./pages/checklist";
+// import Menu from "./pages/menu";
 
 // function App() {
 //   const [buttonVisible, setButtonVisible] = useState(false);
@@ -34,7 +33,6 @@
 
 //     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
-//     // Toujours attendre 2 secondes, même si la notification d'installation n'est pas disponible
 //     setTimeout(() => {
 //       setLoading(false);
 //     }, 2000);
@@ -52,7 +50,7 @@
 //         buttonVisible ? (
 //           <button onClick={handleInstallClick}>Installer</button>
 //         ) : (
-//           <Checklist />
+//           window.deferredPrompt ? null : <Menu />
 //         )
 //       )}
 //     </div>
@@ -60,8 +58,15 @@
 // }
 
 // export default App;
-import React, { useEffect, useState } from 'react';
-import Checklist from "./pages/checklist";
+
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Menu from "./pages/menu";
+import List1 from "./pages/list1";
+import List2 from "./pages/list2";
+import List3 from "./pages/list3";
+import List4 from "./pages/list4";
+
 
 function App() {
   const [buttonVisible, setButtonVisible] = useState(false);
@@ -70,16 +75,15 @@ function App() {
   const handleInstallClick = () => {
     if (window.deferredPrompt) {
       window.deferredPrompt.prompt();
-      window.deferredPrompt.userChoice
-        .then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log("L'utilisateur a accepté l'installation.");
-          } else {
-            console.log("L'utilisateur a refusé l'installation.");
-          }
-          window.deferredPrompt = null;
-          setButtonVisible(false);
-        });
+      window.deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("L'utilisateur a accepté l'installation.");
+        } else {
+          console.log("L'utilisateur a refusé l'installation.");
+        }
+        window.deferredPrompt = null;
+        setButtonVisible(false);
+      });
     }
   };
 
@@ -95,13 +99,15 @@ function App() {
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
-    // Toujours attendre 2 secondes, même si la notification d'installation n'est pas disponible
     setTimeout(() => {
       setLoading(false);
     }, 2000);
 
     return () => {
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
     };
   }, []);
 
@@ -109,12 +115,18 @@ function App() {
     <div className="App">
       {loading ? (
         <p>Chargement en cours...</p>
-      ) : (
-        buttonVisible ? (
-          <button onClick={handleInstallClick}>Installer</button>
-        ) : (
-          window.deferredPrompt ? null : <Checklist />
-        )
+      ) : buttonVisible ? (
+        <button onClick={handleInstallClick}>Installer</button>
+      ) : window.deferredPrompt ? null : (
+        <Router>
+          <Routes>
+            <Route path="/checklist-test" element={<Menu />} />
+            <Route path="/checklist-test/list-1" element={<List1 />} />
+            <Route path="/checklist-test/list-2" element={<List2 />} />
+            <Route path="/checklist-test/list-3" element={<List3 />} />
+            <Route path="/checklist-test/list-4" element={<List4 />} />
+          </Routes>
+        </Router>
       )}
     </div>
   );
