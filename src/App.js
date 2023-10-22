@@ -120,7 +120,7 @@ function App() {
       ) : window.deferredPrompt ? null : (
         <Router>
           <Routes>
-            <Route path="/checklist-test" element={<Menu />} />
+            <Route path="/checklist-test/*" element={<Menu />} />
             <Route path="/checklist-test/list-1" element={<List1 />} />
             <Route path="/checklist-test/list-2" element={<List2 />} />
             <Route path="/checklist-test/list-3" element={<List3 />} />
